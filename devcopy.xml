@@ -1,0 +1,5 @@
+<project>
+  <copy source="PythonCpp/*.h" to="C:/include/pythoncpp" />
+  <copy source="$(platform)/$(configuration)/libPythonCpp*.lib" to="C:/libs" />
+  <copy source="$(platform)/$(configuration)/libPythonCpp*.pdb" to="C:/libs" />
+</project>
