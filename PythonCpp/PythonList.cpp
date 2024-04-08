@@ -29,7 +29,9 @@ namespace Python
 
 	void List::Iterator::cache()
 	{
-		this->val = Object(PyList_GetItem(PO(this->list.data), this->idx));
+		if (PyList_Size(PO(this->list.data)) > 0)
+			this->val = Object(PyList_GetItem(PO(this->list.data), this->idx));
+
 		checkError();
 	}
 

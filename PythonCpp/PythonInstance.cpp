@@ -59,6 +59,7 @@ namespace Python
 	Instance::Instance(const Class& cls, std::vector<Object> params)
 		: Object(createNew(cls, params))
 	{
+		checkError();
 	}
 
 	Instance& Instance::operator=(Instance&& inst)

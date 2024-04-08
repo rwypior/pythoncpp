@@ -374,6 +374,12 @@ namespace Python
 		this->globals->append(name, mod);
 	}
 
+	void Module::run(const std::string& code)
+	{
+		PyRun_String(code.c_str(), Py_single_input, PO(this->globals->data), PO(this->locals->data));
+		checkError();
+	}
+
 	std::string Module::getName() const
 	{
 		const char* name = PyModule_GetName(PO(this->module));

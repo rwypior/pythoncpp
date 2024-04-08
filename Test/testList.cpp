@@ -128,3 +128,21 @@ TEST_CASE("Modifying Python list", "[list]")
 	Python::Object result = test_print_variable_by_name.call_v({ "test_list_to_modify" });
 	REQUIRE(result.toString() == "[10, 20, 30]");
 }
+
+TEST_CASE("Iterating empty list", "[list]")
+{
+	Python::Python& py = getPython();
+
+	Python::List empty_list = Python::List();
+
+	REQUIRE(empty_list.getSize() == 0);
+
+	unsigned int iterationCount = 0;
+	for (auto any : empty_list)
+	{
+		(void)any;
+		iterationCount++;
+	}
+	
+	REQUIRE(iterationCount == 0);
+}

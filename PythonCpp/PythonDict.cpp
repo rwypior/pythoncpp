@@ -41,8 +41,14 @@ namespace Python
 
 	void Dict::Iterator::next()
 	{
-		this->ret = PyDict_Next(PO(dict.data), reinterpret_cast<Py_ssize_t*>(&this->pos), reinterpret_cast<PyObject**>(&this->key), reinterpret_cast<PyObject**>(&this->val.data));
-		Py_INCREF(this->val.data);
+		if (PyDict_Size(PO(dict.data)) > 0)
+		{
+			this->ret = PyDict_Next(PO(dict.data), reinterpret_cast<Py_ssize_t*>(&this->pos), reinterpret_cast<PyObject**>(&this->key), reinterpret_cast<PyObject**>(&this->val.data));
+			Py_INCREF(this->val.data);
+		}
+		else
+			this->ret = 0;
+
 		checkError();
 	}
 

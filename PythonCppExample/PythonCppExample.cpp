@@ -1,9 +1,12 @@
 #include "common.h"
 
 #include "basic_example.h"
+#include "usage_example.h"
 #include "create_function_example.h"
 #include "create_module_example.h"
 #include "create_class_example.h"
+#include "python_class_example.h"
+#include "run_code_example.h"
 
 #include <iostream>
 #include <string>
@@ -15,9 +18,12 @@ int main()
 	std::vector<std::unique_ptr<IExample>> examples;
 
 	examples.push_back(std::make_unique<BasicExample>());
+	examples.push_back(std::make_unique<UsageExample>());
 	examples.push_back(std::make_unique<CreateFunctionExample>());
 	examples.push_back(std::make_unique<CreateModuleExample>());
 	examples.push_back(std::make_unique<CreateClassExample>());
+	examples.push_back(std::make_unique<PythonClassExample>());
+	examples.push_back(std::make_unique<RunCodeExample>());
 
 	int choice = 0;
 

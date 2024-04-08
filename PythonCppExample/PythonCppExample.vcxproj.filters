@@ -49,5 +49,14 @@
     <ClInclude Include="create_class_example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="run_code_example.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="python_class_example.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="usage_example.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

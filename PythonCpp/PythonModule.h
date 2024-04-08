@@ -43,6 +43,8 @@ namespace Python
 		void pushConstant(const std::string& name, const std::string& value);
 		void pushImport(const std::string& name, Module mod);
 
+		void run(const std::string& code);
+
 		std::string getName() const;
 		bool exists(const std::string& name) const;
 		std::string getPath() const;

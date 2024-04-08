@@ -56,11 +56,10 @@ TEST_CASE("Accessing existing element in const dictionary", "[dictionary]")
 		});
 
 	py.checkErrors();
-	auto x = dict["a"].toLong();
 
-	/*REQUIRE(dict["a"].toLong() == 123);
+	REQUIRE(dict["a"].toLong() == 123);
 	REQUIRE(dict["b"].toLong() == 456);
-	REQUIRE(dict["c"].toLong() == 789);*/
+	REQUIRE(dict["c"].toLong() == 789);
 }
 
 TEST_CASE("Accessing not existing element", "[dictionary]")
@@ -267,4 +266,24 @@ TEST_CASE("Modifying existing Python dictionary", "[dictionary]")
 
 	Python::Object result = test_print_variable_by_name.call_v({ "test_dict_to_modify" });
 	REQUIRE(result.toString() == "{'a': 10, 'b': 20, 'c': 30}");
+}
+
+TEST_CASE("Iterating empty Python dictionary", "[dictionary]")
+{
+	Python::Python& py = getPython();
+	Python::Module testmodule = py.loadModule("testmodule");
+
+	Python::Dict empty_dict = Python::Dict();
+
+	REQUIRE(empty_dict.getSize() == 0);
+
+	unsigned int iterationCount = 0;
+
+	for (auto el : empty_dict)
+	{
+		(void)el;
+		iterationCount++;
+	}
+
+	REQUIRE(iterationCount == 0);
 }

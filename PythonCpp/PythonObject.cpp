@@ -115,7 +115,7 @@ namespace Python
 	{
 		// Returning object may still be the same for primitive types
 		// See more in 'deepcopy' function
-		assert(Py_REFCNT(this->data) >= 1);
+		assert(!this->data || Py_REFCNT(this->data) >= 1);
 	}
 
 	Object::Object(Object&& data) noexcept

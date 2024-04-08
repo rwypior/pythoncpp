@@ -79,6 +79,9 @@ namespace Python
 		// for small types, eg two separate variables with a small value
 		// like '42' may be references to exactly same place
 
+		if (!obj)
+			return nullptr;
+
 		assert(Py_REFCNT(obj) >= 1);
 		PyGILState_STATE state = PyGILState_Ensure();
 
