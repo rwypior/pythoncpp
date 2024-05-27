@@ -37,7 +37,7 @@ target_link_libraries(PythonCpp PUBLIC Python::Python)
 
 add_subdirectory ("src")
 add_subdirectory ("example")
-add_subdirectory ("test")
+add_subdirectory ("tests")
 
 set(
 	CMAKE_INSTALL_LIBDIR
