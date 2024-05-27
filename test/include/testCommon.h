@@ -9,9 +9,7 @@
 inline Python::Python& getPython()
 {
 	Python::Python& py = Python::Python::getInstance();
-	//std::string path = std::filesystem::current_path().string() + "\\..\\..\\test\\python";
-	std::string path = std::filesystem::absolute(std::filesystem::current_path().string() + "\\..\\..\\Test\\python").string();
-	py.appendPath(path);
+	py.appendPath("python");
 
 	return py;
 }

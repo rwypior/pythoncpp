@@ -1,0 +1,1 @@
+target_sources(PythonCppExample PUBLIC PRIVATE PythonCppExample.cpp)
