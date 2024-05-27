@@ -15,6 +15,7 @@ namespace Python
 		static constexpr char TypeFloat[] = "float";
 		static constexpr char TypeList[] = "list";
 		static constexpr char TypeDict[] = "dict";
+		static constexpr char TypeFunction[] = "function";
 		static constexpr char TypeType[] = "type";
 		static constexpr char TypeModule[] = "module";
 
@@ -29,6 +30,7 @@ namespace Python
 		bool isFloat() const;
 		bool isList() const;
 		bool isDict() const;
+		bool isFunction() const;
 		bool isType() const;
 		bool isModule() const;
 		bool operator==(const Type& b) const;

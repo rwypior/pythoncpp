@@ -24,8 +24,12 @@ struct BasicExample : public IExample
 		// Load the module
 		Python::Module basic_example = py.loadModule("basic_example");
 
+		std::cout << "Loaded \"" << basic_example.getName() << "\" module. Here's some doc:\n" << basic_example.getDocstring() << std::endl << std::endl;
+
 		// Get a function from the module
 		Python::Function basic_sum = basic_example.getFunction("basic_sum");
+
+		std::cout << "Calling \"" << basic_sum.getName() << "\" function. Here's some doc:\n" << basic_sum.getDocstring() << std::endl << std::endl;
 
 		// Call the function and get result
 		Python::Object result = basic_sum(1337, 42);

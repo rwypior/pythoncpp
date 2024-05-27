@@ -22,6 +22,9 @@ namespace Python
 
 		Function getFunction(const std::string& name) const;
 
+		std::string getDocstring() const;
+		std::string getName() const;
+
 		pyobj getType() const;
 		bool isHeapType() const;
 

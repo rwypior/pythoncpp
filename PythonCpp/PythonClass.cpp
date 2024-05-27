@@ -30,6 +30,18 @@ namespace Python
 		return Function(function);
 	}
 
+	std::string Class::getDocstring() const
+	{
+		Object obj = Object(PyObject_GetAttrString(PO(this->cls), "__doc__"));
+		return obj.toString();
+	}
+
+	std::string Class::getName() const
+	{
+		Object obj = Object(PyObject_GetAttrString(PO(this->cls), "__name__"));
+		return obj.toString();
+	}
+
 	pyobj Class::getType() const
 	{
 		pyobj ret = PyObject_Type(PO(this->cls));

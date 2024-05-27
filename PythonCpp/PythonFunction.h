@@ -56,6 +56,9 @@ namespace Python
 		Object call_v(std::vector<Object> params);
 		Object callref(std::vector<std::reference_wrapper<Object>> params);
 
+		std::string getDocstring() const;
+		std::string getName() const;
+
 		template<typename ...T>
 		Object operator()(T&&... params)
 		{

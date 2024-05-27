@@ -29,6 +29,8 @@ struct PythonClassExample : public IExample
 			// Get Python class
 			Python::Class example_class = basic_example.getClass("example_class");
 
+			std::cout << "Loaded \"" << example_class.getName() << "\" class. Here's some doc:\n" << example_class.getDocstring() << std::endl << std::endl;
+
 			// Create class instance
 			Python::Instance example_class_instance = example_class.createInstance();
 

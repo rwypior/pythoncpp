@@ -44,4 +44,16 @@ namespace Python
 		Tuple tuple(params);
 		return this->call(tuple);
 	}
+
+	std::string Function::getDocstring() const
+	{
+		Object obj = Object(PyObject_GetAttrString(PO(this->function), "__doc__"));
+		return obj.toString();
+	}
+
+	std::string Function::getName() const
+	{
+		Object obj = Object(PyObject_GetAttrString(PO(this->function), "__name__"));
+		return obj.toString();
+	}
 }

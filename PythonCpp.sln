@@ -18,6 +18,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj",
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Install", "Install\Install.vcxproj", "{24B987C4-25BD-4DB7-851A-AAD94393193F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{57218C48-2D29-4931-AB34-799518E6550C} = {57218C48-2D29-4931-AB34-799518E6550C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PythonCppExample", "PythonCppExample\PythonCppExample.vcxproj", "{A7BE0949-4030-41DC-A0EE-8BBA9087D0A0}"
 	ProjectSection(ProjectDependencies) = postProject

@@ -31,6 +31,8 @@ namespace Python
 
 		operator pyobj() const;
 
+		void reload();
+
 		Function createFunction(const std::string& name, const std::string& source);
 		Function getFunction(const std::string& name);
 		void addFunctions(const std::vector<Types::FunctionDefinition>& definitions);
@@ -46,6 +48,7 @@ namespace Python
 		void run(const std::string& code);
 
 		std::string getName() const;
+		std::string getDocstring() const;
 		bool exists(const std::string& name) const;
 		std::string getPath() const;
 

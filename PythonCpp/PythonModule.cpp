@@ -157,6 +157,11 @@ namespace Python
 		return this->module;
 	}
 
+	void Module::reload()
+	{
+		this->module = PyImport_ReloadModule(PO(this->module));
+	}
+
 	Function Module::createFunction(const std::string& name, const std::string& source)
 	{
 		PyRun_String(source.c_str(), Py_file_input, PO(this->globals->data), PO(this->locals->data));
@@ -385,6 +390,12 @@ namespace Python
 		const char* name = PyModule_GetName(PO(this->module));
 		checkError();
 		return std::string(name);
+	}
+
+	std::string Module::getDocstring() const
+	{
+		Object obj = Object(PyObject_GetAttrString(PO(this->module), "__doc__"));
+		return obj.toString();
 	}
 
 	bool Module::exists(const std::string& name) const

@@ -44,6 +44,11 @@ namespace Python
 		return this->toString() == TypeDict;
 	}
 
+	bool Type::isFunction() const
+	{
+		return this->toString() == TypeFunction;
+	}
+
 	bool Type::isType() const
 	{
 		return this->toString() == TypeType;

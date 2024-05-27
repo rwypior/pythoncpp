@@ -7,6 +7,7 @@
 #include "create_class_example.h"
 #include "python_class_example.h"
 #include "run_code_example.h"
+#include "module_reloading_example.h"
 
 #include <iostream>
 #include <string>
@@ -24,6 +25,7 @@ int main()
 	examples.push_back(std::make_unique<CreateClassExample>());
 	examples.push_back(std::make_unique<PythonClassExample>());
 	examples.push_back(std::make_unique<RunCodeExample>());
+	examples.push_back(std::make_unique<ModuleReloadingExample>());
 
 	int choice = 0;
 

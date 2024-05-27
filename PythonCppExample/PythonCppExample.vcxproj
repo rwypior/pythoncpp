@@ -145,6 +145,8 @@
     <None Include="python\basic_example.py" />
     <None Include="python\class_example.py" />
     <None Include="python\module_example.py" />
+    <None Include="python\module_example_b.py" />
+    <None Include="python\module_example_import.py" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basic_example.h" />
@@ -152,6 +154,7 @@
     <ClInclude Include="create_class_example.h" />
     <ClInclude Include="create_function_example.h" />
     <ClInclude Include="create_module_example.h" />
+    <ClInclude Include="module_reloading_example.h" />
     <ClInclude Include="python_class_example.h" />
     <ClInclude Include="run_code_example.h" />
     <ClInclude Include="usage_example.h" />
