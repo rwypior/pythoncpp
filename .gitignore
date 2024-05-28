@@ -5,3 +5,4 @@ PythonCpp.sln
 .vs/
 __pycache__/
 out/
+build/

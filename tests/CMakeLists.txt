@@ -7,7 +7,7 @@ endif()
 
 project ("PythonCppTest")
 
-find_path(CATCH2_INCLUDE_DIR NAMES catch.hpp PATHS {proper-location} REQUIRED)
+find_path(CATCH2_INCLUDE_DIR NAMES catch.hpp PATHS {proper-location} OPTIONAL)
 
 add_executable(PythonCppTest)
 set_property(TARGET PythonCppTest PROPERTY CXX_STANDARD 17)
@@ -19,6 +19,7 @@ target_include_directories(PythonCppTest PRIVATE "include")
 target_link_libraries(PythonCppTest PRIVATE PythonCpp)
 
 add_subdirectory ("src")
+add_subdirectory ("include")
 
 add_custom_command(
   TARGET PythonCppTest POST_BUILD

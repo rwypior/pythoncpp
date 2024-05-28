@@ -10,6 +10,7 @@ project ("PythonCppExample")
 add_executable(PythonCppExample)
 
 set_property(TARGET PythonCppExample PROPERTY CXX_STANDARD 17)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT PythonCppExample)
 
 target_include_directories(PythonCppExample PRIVATE "${CMAKE_SOURCE_DIR}/include")
 target_include_directories(PythonCppExample PRIVATE "include")
@@ -17,6 +18,7 @@ target_include_directories(PythonCppExample PRIVATE "include")
 target_link_libraries(PythonCppExample PRIVATE PythonCpp)
 
 add_subdirectory ("src")
+add_subdirectory ("include")
 
 add_custom_command(
   TARGET PythonCppExample POST_BUILD

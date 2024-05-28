@@ -1,4 +1,4 @@
-#include "private/Python.hpp"
+#include "PythonCppCommon.hpp"
 #include "PythonType.h"
 
 namespace Python

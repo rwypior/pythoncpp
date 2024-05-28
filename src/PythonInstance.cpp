@@ -1,4 +1,4 @@
-#include "private/Python.hpp"
+#include "PythonCppCommon.hpp"
 #include "PythonInstance.h"
 #include "PythonTuple.h"
 #include "PythonClass.h"

@@ -1,4 +1,4 @@
-#include "private/Python.hpp"
+#include "PythonCppCommon.hpp"
 #include "PythonMain.h"
 #include "PythonException.h"
 #include "PythonModule.h"

@@ -18,26 +18,24 @@ endif()
 project ("PythonCpp")
 add_library(PythonCpp)
 
-if(MSVC)
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2")
-else()
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
-endif()
-
 set_property(TARGET PythonCpp PROPERTY CXX_STANDARD 17)
 
 find_path(PYTHON_INCLUDE_DIR NAMES Python.h REQUIRED)
 
 find_package(Python REQUIRED Development)
 
-target_include_directories(PythonCpp PUBLIC "${PYTHON_INCLUDE_DIR}")
+target_include_directories(PythonCpp PRIVATE "${PYTHON_INCLUDE_DIR}")
 target_include_directories(PythonCpp PRIVATE "include")
+target_include_directories(PythonCpp PRIVATE "src")
 
 target_link_libraries(PythonCpp PUBLIC Python::Python)
 
 add_subdirectory ("src")
+add_subdirectory ("include")
 add_subdirectory ("example")
 add_subdirectory ("tests")
+
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT PythonCppExample)
 
 set(
 	CMAKE_INSTALL_LIBDIR
@@ -66,7 +64,6 @@ install(
 	DIRECTORY include/
 	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 	FILES_MATCHING PATTERN "*.h"
-	PATTERN "private" EXCLUDE
 )
 
 install(
