@@ -7,12 +7,10 @@ endif()
 
 project ("PythonCppTest")
 
-find_path(CATCH2_INCLUDE_DIR NAMES catch.hpp PATHS {proper-location} OPTIONAL)
-
 add_executable(PythonCppTest)
 set_property(TARGET PythonCppTest PROPERTY CXX_STANDARD 17)
 
-target_include_directories(PythonCppTest PRIVATE "${CATCH2_INCLUDE_DIR}")
+target_include_directories(PythonCppTest PRIVATE "${CMAKE_SOURCE_DIR}/extern")
 target_include_directories(PythonCppTest PRIVATE "${CMAKE_SOURCE_DIR}/include")
 target_include_directories(PythonCppTest PRIVATE "include")
 

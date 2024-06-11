@@ -4,6 +4,11 @@
 
 namespace Python
 {
+	void* defaultFlushFunc(void* /*self*/, void* /* arg */)
+	{
+		return Object::none();
+	}
+
 	// Module builder
 
 	ModuleBuilder::ModuleBuilder(std::initializer_list<Types::FunctionDefinition> defs)
@@ -15,6 +20,12 @@ namespace Python
 	{
 		this->functionDefinitions.push_back(def);
 		return *this;
+	}
+
+	void ModuleBuilder::registerPrintFunction(FunctionDefinition::fncPtr printFunc, FunctionDefinition::fncPtr flushFunc)
+	{
+		this->addFunction({ "write", printFunc, DefaultFunctionFlag, "" });
+		this->addFunction({ "flush", flushFunc ? flushFunc : &defaultFlushFunc, DefaultFunctionFlag, "" });
 	}
 
 	void ModuleBuilder::build(Module& module) const

@@ -2,7 +2,7 @@
 
 #include "pythoncpp.h"
 
-#include <catch/catch.hpp>
+#include <catch2/catch.hpp>
 
 #include <string>
 #include <vector>

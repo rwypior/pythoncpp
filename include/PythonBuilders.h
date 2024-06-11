@@ -32,6 +32,8 @@ namespace Python
 		ModuleBuilder(std::initializer_list<Types::FunctionDefinition> defs = {});
 		ModuleBuilder& addFunction(const Types::FunctionDefinition& def);
 
+		void registerPrintFunction(FunctionDefinition::fncPtr printFunc, FunctionDefinition::fncPtr flushFunc = nullptr);
+
 		void build(Module& module) const;
 
 	protected:

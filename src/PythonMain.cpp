@@ -192,6 +192,13 @@ namespace Python
 
 	void Python::redirectOutput(const Module& module, const std::string& streamName)
 	{
+		assert(
+			"Printing module should define 'write' and 'flush' functions to be able to print correctly. "
+			"Use 'registerPrintFunction' function on ModuleBuilder to register the functions."
+			&& 
+			module.exists("write") && module.exists("flush")
+		);
+
 		PySys_SetObject(streamName.c_str(), PO(module));
 		checkError();
 	}

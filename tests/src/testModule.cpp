@@ -2,7 +2,7 @@
 
 #include "pythoncpp.h"
 
-#include <catch/catch.hpp>
+#include <catch2/catch.hpp>
 
 #include <string>
 #include <vector>
@@ -69,10 +69,10 @@ TEST_CASE("Creating module", "[module]")
 	Python::ModuleBuilder builder({
 		{ "cppfunc_return42", cppfunc_return42, Python::DefaultFunctionFlag, "Return 42" },
 		{ "cppfunc_sum", cppfunc_sum, Python::DefaultFunctionFlag, "Sum" },
-		{ "write", cppfunc_print, Python::DefaultFunctionFlag, "Custom print" },
 		{ "cppfunc_increment_counter", cppfunc_increment_counter, Python::DefaultFunctionFlag, "Increment the counter" },
 		{ "cppfunc_return_counter", cppfunc_return_counter, Python::DefaultFunctionFlag, "Return the counter value" }
 		});
+	builder.registerPrintFunction(cppfunc_print);
 	Python::Module myMod = py.registerModule("cppmodule_1");
 	builder.build(myMod);
 
