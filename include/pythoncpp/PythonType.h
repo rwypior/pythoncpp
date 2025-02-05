@@ -1,8 +1,8 @@
 #ifndef _h_python_type
 #define _h_python_type
 
-#include "PythonDefs.h"
-#include "PythonObject.h"
+#include "pythoncpp/PythonDefs.h"
+#include "pythoncpp/PythonObject.h"
 
 namespace Python
 {

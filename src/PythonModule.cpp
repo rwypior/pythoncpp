@@ -1,9 +1,9 @@
 #include "PythonCppCommon.hpp"
-#include "PythonModule.h"
-#include "PythonFunction.h"
-#include "PythonDict.h"
-#include "PythonClass.h"
-#include "PythonException.h"
+#include "pythoncpp/PythonModule.h"
+#include "pythoncpp/PythonFunction.h"
+#include "pythoncpp/PythonDict.h"
+#include "pythoncpp/PythonClass.h"
+#include "pythoncpp/PythonException.h"
 
 #include <sstream>
 #include <vector>

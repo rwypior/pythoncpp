@@ -1,9 +1,9 @@
 #include "PythonCppCommon.hpp"
-#include "PythonMain.h"
-#include "PythonModule.h"
-#include "PythonList.h"
-#include "PythonBuilders.h"
-#include "PythonException.h"
+#include "pythoncpp/PythonMain.h"
+#include "pythoncpp/PythonModule.h"
+#include "pythoncpp/PythonList.h"
+#include "pythoncpp/PythonBuilders.h"
+#include "pythoncpp/PythonException.h"
 
 #include <cstdlib>
 #include <cassert>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PythonCpp.h"
+#include "pythoncpp/PythonCpp.h"
 
 #include <string>
 #include <filesystem>

@@ -1,6 +1,6 @@
 #include "PythonCppCommon.hpp"
-#include "PythonFunction.h"
-#include "PythonTuple.h"
+#include "pythoncpp/PythonFunction.h"
+#include "pythoncpp/PythonTuple.h"
 
 namespace Python
 {

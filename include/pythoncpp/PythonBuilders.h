@@ -1,7 +1,7 @@
 #ifndef _h_python_builders
 #define _h_python_builders
 
-#include "PythonDefs.h"
+#include "pythoncpp/PythonDefs.h"
 
 #include <initializer_list>
 #include <vector>

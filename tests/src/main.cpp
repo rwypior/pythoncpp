@@ -2,6 +2,6 @@
 
 #include "testCommon.h"
 
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 std::unordered_map<std::string, unsigned int> TestSignal::signals;

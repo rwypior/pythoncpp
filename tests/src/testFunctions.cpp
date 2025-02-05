@@ -1,8 +1,8 @@
 #include "testCommon.h"
 
-#include "pythoncpp.h"
+#include "pythoncpp/PythonCpp.h"
 
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 TEST_CASE("Basic returning function", "[functions]")
 {
@@ -31,9 +31,9 @@ TEST_CASE("Single argument function", "[functions]")
 
 	Python::Object result2 = test_function_mul_by_2.call_v({ num2 });
 	REQUIRE(result2.toLong() == num2 * 2);
-
+	
 	Python::Object result3 = test_function_mul_by_2.call_v({ num3 });
-	REQUIRE(result3.toDouble() == Approx(num3 * 2));
+	REQUIRE(result3.toDouble() == Catch::Approx(num3 * 2));
 }
 
 TEST_CASE("Two argument function", "[functions]")
@@ -50,10 +50,10 @@ TEST_CASE("Two argument function", "[functions]")
 	REQUIRE(result1.toLong() == pair1.first * pair1.second);
 
 	Python::Object result2 = test_function_mul_both.call_v({ pair2.first, pair2.second });
-	REQUIRE(result2.toDouble() == Approx(pair2.first * pair2.second));
+	REQUIRE(result2.toDouble() == Catch::Approx(pair2.first * pair2.second));
 
 	Python::Object result3 = test_function_mul_both.call_v({ pair3.first, pair3.second });
-	REQUIRE(result3.toDouble() == Approx(pair3.first * pair3.second));
+	REQUIRE(result3.toDouble() == Catch::Approx(pair3.first * pair3.second));
 }
 
 TEST_CASE("Two argument function using call operator", "[functions]")

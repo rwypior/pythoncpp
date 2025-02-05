@@ -1,10 +1,10 @@
 #include "PythonCppCommon.hpp"
-#include "PythonInspect.h"
-#include "PythonInstance.h"
-#include "PythonMain.h"
-#include "PythonModule.h"
-#include "PythonFunction.h"
-#include "PythonList.h"
+#include "pythoncpp/PythonInspect.h"
+#include "pythoncpp/PythonInstance.h"
+#include "pythoncpp/PythonMain.h"
+#include "pythoncpp/PythonModule.h"
+#include "pythoncpp/PythonFunction.h"
+#include "pythoncpp/PythonList.h"
 
 namespace Python
 {

@@ -1,7 +1,7 @@
 #include "PythonCppCommon.hpp"
-#include "PythonInstance.h"
-#include "PythonTuple.h"
-#include "PythonClass.h"
+#include "pythoncpp/PythonInstance.h"
+#include "pythoncpp/PythonTuple.h"
+#include "pythoncpp/PythonClass.h"
 
 namespace Python
 {

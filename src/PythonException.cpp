@@ -1,10 +1,10 @@
 #include "PythonCppCommon.hpp"
-#include "PythonMain.h"
-#include "PythonException.h"
-#include "PythonModule.h"
-#include "PythonFunction.h"
-#include "PythonList.h"
-#include "PythonTuple.h"
+#include "pythoncpp/PythonMain.h"
+#include "pythoncpp/PythonException.h"
+#include "pythoncpp/PythonModule.h"
+#include "pythoncpp/PythonFunction.h"
+#include "pythoncpp/PythonList.h"
+#include "pythoncpp/PythonTuple.h"
 
 namespace Python
 {

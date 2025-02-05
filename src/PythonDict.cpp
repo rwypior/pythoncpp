@@ -1,7 +1,7 @@
 #include "PythonCppCommon.hpp"
-#include "PythonDict.h"
-#include "PythonModule.h"
-#include "PythonException.h"
+#include "pythoncpp/PythonDict.h"
+#include "pythoncpp/PythonModule.h"
+#include "pythoncpp/PythonException.h"
 
 namespace Python
 {
