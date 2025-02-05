@@ -17,6 +17,7 @@ endif()
 
 project ("PythonCpp")
 add_library(PythonCpp)
+add_library(PythonCpp::PythonCpp ALIAS PythonCpp)
 
 set_property(TARGET PythonCpp PROPERTY CXX_STANDARD 17)
 
