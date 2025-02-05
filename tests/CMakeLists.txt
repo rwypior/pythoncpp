@@ -10,11 +10,13 @@ project ("PythonCppTest")
 add_executable(PythonCppTest)
 set_property(TARGET PythonCppTest PROPERTY CXX_STANDARD 17)
 
-target_include_directories(PythonCppTest PRIVATE "${CMAKE_SOURCE_DIR}/extern")
+find_package(Catch2 3.6.0 REQUIRED)
+
 target_include_directories(PythonCppTest PRIVATE "${CMAKE_SOURCE_DIR}/include")
 target_include_directories(PythonCppTest PRIVATE "include")
 
 target_link_libraries(PythonCppTest PRIVATE PythonCpp)
+target_link_libraries(PythonCppTest PRIVATE Catch2::Catch2WithMain)
 
 add_subdirectory ("src")
 add_subdirectory ("include")
@@ -23,3 +25,7 @@ add_custom_command(
   TARGET PythonCppTest POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different "${PROJECT_SOURCE_DIR}/python" "${PROJECT_BINARY_DIR}/python"
 )
+
+list(APPEND CMAKE_MODULE_PATH ${Catch2_SOURCE_DIR}/extras)
+include(Catch)
+catch_discover_tests(PythonCppTest)

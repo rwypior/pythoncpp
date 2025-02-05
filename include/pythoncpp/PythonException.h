@@ -1,7 +1,7 @@
 #ifndef _h_python_exception
 #define _h_python_exception
 
-#include "PythonDefs.h"
+#include "pythoncpp/PythonDefs.h"
 
 namespace Python
 {

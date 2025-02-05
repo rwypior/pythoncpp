@@ -1,8 +1,8 @@
 #include "testCommon.h"
 
-#include "pythoncpp.h"
+#include "pythoncpp/PythonCpp.h"
 
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 #include <unordered_set>
 #include <unordered_map>
@@ -64,7 +64,7 @@ TEST_CASE("Accessing existing element in const dictionary", "[dictionary]")
 
 TEST_CASE("Accessing not existing element", "[dictionary]")
 {
-	using Catch::Matchers::Contains;
+	using Catch::Matchers::ContainsSubstring;
 
 	Python::Python& py = getPython();
 
@@ -74,7 +74,7 @@ TEST_CASE("Accessing not existing element", "[dictionary]")
 		{ "c", 789 }
 	});
 
-	REQUIRE_THROWS_WITH(dict["d"], Contains("Dictionary doesn't contain element"));
+	REQUIRE_THROWS_WITH(dict["d"], ContainsSubstring("Dictionary doesn't contain element"));
 }
 
 TEST_CASE("Iterating dictionary", "[dictionary]")

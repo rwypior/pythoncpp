@@ -1,8 +1,8 @@
 #include "testCommon.h"
 
-#include "pythoncpp.h"
+#include "pythoncpp/PythonCpp.h"
 
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 TEST_CASE("Simple list creation", "[list]")
 {
@@ -33,13 +33,13 @@ TEST_CASE("Create list and set in Python", "[list]")
 
 TEST_CASE("Iterating out of bounds", "[list]")
 {
-	using Catch::Matchers::Contains;
+	using Catch::Matchers::ContainsSubstring;
 
 	Python::Python& py = getPython();
 
 	Python::List list({ 1, 2, 3 });
 
-	REQUIRE_THROWS_WITH(list[3], Contains("List out of bounds"));
+	REQUIRE_THROWS_WITH(list[3], ContainsSubstring("List out of bounds"));
 }
 
 TEST_CASE("Iterating list", "[list]")

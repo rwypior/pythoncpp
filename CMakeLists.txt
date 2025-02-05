@@ -20,54 +20,75 @@ add_library(PythonCpp)
 
 set_property(TARGET PythonCpp PROPERTY CXX_STANDARD 17)
 
-find_path(PYTHON_INCLUDE_DIR NAMES Python.h REQUIRED)
-
 find_package(Python REQUIRED Development)
 
-target_include_directories(PythonCpp PRIVATE "${PYTHON_INCLUDE_DIR}")
-target_include_directories(PythonCpp PRIVATE "include")
+target_include_directories (PythonCpp PUBLIC 
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+    "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
 target_include_directories(PythonCpp PRIVATE "src")
 
 target_link_libraries(PythonCpp PUBLIC Python::Python)
 
 add_subdirectory ("src")
-add_subdirectory ("include")
+add_subdirectory ("include/pythoncpp")
 add_subdirectory ("example")
-add_subdirectory ("tests")
+
+if(${BUILD_TESTING})
+    message("Building unit tests")
+
+    include(CTest)
+    add_subdirectory ("tests")
+endif()
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT PythonCppExample)
 
-set(
-	CMAKE_INSTALL_LIBDIR
-	"${CMAKE_INSTALL_PREFIX}/lib"
-	CACHE PATH "Specify path where to install library files"
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+
+set(ConfigPackageLocation lib/cmake/PythonCpp)
+
+configure_package_config_file(
+        cmake/PythonCppConfig.cmake.in
+	    "${CMAKE_CURRENT_BINARY_DIR}/PythonCpp/PythonCppConfig.cmake"
+	    INSTALL_DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/PythonCpp"
 )
 
-set(
-	CMAKE_INSTALL_INCLUDEDIR
-	"${CMAKE_INSTALL_PREFIX}/include"
-	CACHE PATH "Specify path where to install header files"
-)
-
-set(
-	CMAKE_INSTALL_PDBDIR
-	"${CMAKE_INSTALL_PREFIX}/bin"
-	CACHE PATH "Specify path where to install PDB files"
-)
-
-install(
-	FILES $<TARGET_FILE:PythonCpp>
-	DESTINATION ${CMAKE_INSTALL_LIBDIR}
+write_basic_package_version_file(
+        "${CMAKE_CURRENT_BINARY_DIR}/PythonCpp/PythonCppConfigVersion.cmake"
+        VERSION 1.0.0
+        COMPATIBILITY AnyNewerVersion
 )
 
 install(
-	DIRECTORY include/
-	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-	FILES_MATCHING PATTERN "*.h"
+        TARGETS PythonCpp EXPORT PythonCppTargets
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
 install(
-	FILES "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/PythonCpp.dir/PythonCpp.pdb"
-	DESTINATION ${CMAKE_INSTALL_PDBDIR}
-	OPTIONAL
+        DIRECTORY "include/"
+        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+        FILES_MATCHING PATTERN "*.h"
 )
+
+export(EXPORT PythonCppTargets
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/PythonCpp/PythonCppTargets.cmake"
+        NAMESPACE PythonCpp::
+)
+
+install(EXPORT PythonCppTargets
+        FILE PythonCppTargets.cmake
+        NAMESPACE PythonCpp::
+        DESTINATION ${ConfigPackageLocation}
+)
+
+install(FILES 
+            "${CMAKE_CURRENT_BINARY_DIR}/PythonCpp/PythonCppConfig.cmake" 
+            "${CMAKE_CURRENT_BINARY_DIR}/PythonCpp/PythonCppConfigVersion.cmake"
+        DESTINATION ${ConfigPackageLocation}
+)
+
+export(PACKAGE PythonCpp)

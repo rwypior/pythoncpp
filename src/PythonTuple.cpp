@@ -1,6 +1,6 @@
 #include "PythonCppCommon.hpp"
-#include "PythonTuple.h"
-#include "PythonException.h"
+#include "pythoncpp/PythonTuple.h"
+#include "pythoncpp/PythonException.h"
 
 namespace Python
 {

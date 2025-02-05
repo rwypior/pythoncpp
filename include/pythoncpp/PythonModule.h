@@ -1,8 +1,8 @@
 #ifndef _h_python_module
 #define _h_python_module
 
-#include "PythonDefs.h"
-#include "PythonDict.h"
+#include "pythoncpp/PythonDefs.h"
+#include "pythoncpp/PythonDict.h"
 
 #include <memory>
 #include <vector>

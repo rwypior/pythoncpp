@@ -1,8 +1,8 @@
 #include "testCommon.h"
 
-#include "pythoncpp.h"
+#include "pythoncpp/PythonCpp.h"
 
-#include <catch2/catch.hpp>
+#include <catch2/catch_all.hpp>
 
 #include <string>
 #include <vector>
@@ -20,7 +20,7 @@ TEST_CASE("Call a class method with no arguments", "[class]")
 
 TEST_CASE("Call a class method without self argument", "[class]")
 {
-	using Catch::Matchers::Contains;
+	using Catch::Matchers::ContainsSubstring;
 
 	Python::Python& py = getPython();
 	Python::Module testmodule = py.loadModule("testmodule");
@@ -28,7 +28,7 @@ TEST_CASE("Call a class method without self argument", "[class]")
 	Python::Class testclass = testmodule.getClass("TestClass");
 	Python::Instance testclassinstance = testclass.createInstance();
 
-	REQUIRE_THROWS_WITH(testclassinstance.call("noargs"), Contains("takes 0 positional arguments but 1 was given"));
+	REQUIRE_THROWS_WITH(testclassinstance.call("noargs"), ContainsSubstring("takes 0 positional arguments but 1 was given"));
 	REQUIRE(testclassinstance.call("static").toLong() == 42);
 }
 

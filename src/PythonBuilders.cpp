@@ -1,6 +1,6 @@
 #include "PythonCppCommon.hpp"
-#include "PythonBuilders.h"
-#include "PythonModule.h"
+#include "pythoncpp/PythonBuilders.h"
+#include "pythoncpp/PythonModule.h"
 
 namespace Python
 {

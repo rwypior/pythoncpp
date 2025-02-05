@@ -1,8 +1,8 @@
 #ifndef _h_python_tuple
 #define _h_python_tuple
 
-#include "PythonDefs.h"
-#include "PythonObject.h"
+#include "pythoncpp/PythonDefs.h"
+#include "pythoncpp/PythonObject.h"
 
 #include <vector>
 #include <functional>

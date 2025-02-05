@@ -1,8 +1,8 @@
 #ifndef _h_python_inspect
 #define _h_python_inspect
 
-#include "PythonDefs.h"
-#include "PythonModule.h"
+#include "pythoncpp/PythonDefs.h"
+#include "pythoncpp/PythonModule.h"
 
 namespace Python
 {

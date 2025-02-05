@@ -1,5 +1,5 @@
 #include "PythonCppCommon.hpp"
-#include "PythonObject.h"
+#include "pythoncpp/PythonObject.h"
 
 namespace Python
 {

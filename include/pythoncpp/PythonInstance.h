@@ -1,8 +1,8 @@
 #ifndef _h_python_instance
 #define _h_python_instance
 
-#include "PythonDefs.h"
-#include "PythonObject.h"
+#include "pythoncpp/PythonDefs.h"
+#include "pythoncpp/PythonObject.h"
 
 #include <vector>
 

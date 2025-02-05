@@ -3,7 +3,7 @@
 #ifndef _h_python_util
 #define _h_python_util
 
-#include "PythonDefs.h"
+#include "pythoncpp/PythonDefs.h"
 
 #ifdef _DEBUG
 #	define RESTORE_DEBUG

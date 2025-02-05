@@ -1,6 +1,7 @@
 *.pyc
 CMakeSettings.json
 PythonCpp.sln
+CMakeUserPresets.json
 
 .vs/
 __pycache__/

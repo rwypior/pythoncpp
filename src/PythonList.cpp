@@ -1,6 +1,6 @@
 #include "PythonCppCommon.hpp"
-#include "PythonList.h"
-#include "PythonException.h"
+#include "pythoncpp/PythonList.h"
+#include "pythoncpp/PythonException.h"
 
 namespace Python
 {

@@ -10,7 +10,7 @@
 #include "common.h"
 
 // Include all-in-one PythonCPP header
-#include <PythonCpp.h>
+#include <pythoncpp/PythonCpp.h>
 
 #include <iostream>
 
