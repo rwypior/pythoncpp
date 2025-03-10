@@ -18,7 +18,7 @@ namespace Python
 		}
 
 	private:
-		const std::string& message;
+		std::string message;
 	};
 
 	class PythonErrorException : public PythonException
@@ -39,7 +39,7 @@ namespace Python
 	{
 	public:
 		PythonGeneralException(const std::string& msg)
-			: PythonException(msg.c_str())
+			: PythonException(msg)
 		{ }
 	};
 
@@ -47,7 +47,7 @@ namespace Python
 	{
 	public:
 		PythonOutOfBoundsException(const std::string& msg)
-			: PythonException(msg.c_str())
+			: PythonException(msg)
 		{ }
 	};
 }
