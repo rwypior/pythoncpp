@@ -11,6 +11,7 @@
 #include <pythoncpp/PythonCpp.h>
 
 #include <iostream>
+#include <limits>
 
 struct ModuleReloadingExample : public IExample
 {
@@ -38,7 +39,7 @@ struct ModuleReloadingExample : public IExample
 			callFunction(module_example_b);
 
 			std::cout << "Now change the code, and press any key..." << std::endl;
-			std::cin.clear(); std::cin.ignore(INT_MAX, '\n');
+			std::cin.clear(); std::cin.ignore(std::numeric_limits<int>::max(), '\n');
 			std::cin.get();
 
 			module_example_b.reload();

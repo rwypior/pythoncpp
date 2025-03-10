@@ -282,7 +282,7 @@ namespace Python
 				objDef.members.push_back({ 
 					memberdef.name.c_str(), 
 					translateType(memberdef.type),
-					memberdef.offset + static_cast<__int64>(sizeof(CustomObject)),
+					memberdef.offset + static_cast<int64_t>(sizeof(CustomObject)),
 					memberdef.readonly ? READONLY : 0, 
 					memberdef.docstring.c_str() 
 				});
@@ -312,7 +312,7 @@ namespace Python
 			objDef.object = {
 				/* base */					PyObject_HEAD_INIT(NULL)
 				/* tp_name */				fullName,
-				/* tp_basicsize */			static_cast<__int64>(sizeof(CustomObject) + def.typeSize),
+				/* tp_basicsize */			static_cast<int64_t>(sizeof(CustomObject) + def.typeSize),
 				/* tp_itemsize */			0,
 				/* tp_dealloc */			reinterpret_cast<destructor>(def.deallocFunction),
 				/* tp_vectorcall_offset */	0,

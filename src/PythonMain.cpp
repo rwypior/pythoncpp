@@ -5,6 +5,7 @@
 #include "pythoncpp/PythonBuilders.h"
 #include "pythoncpp/PythonException.h"
 
+#include <string>
 #include <cstdlib>
 #include <cassert>
 #include <stdlib.h>
@@ -20,7 +21,8 @@ namespace Python
 	{
 #pragma warning( push )
 #pragma warning( disable: 4996 )
-		int res = putenv(makeEnv(name, value).c_str());
+		std::string e = makeEnv(name, value);
+		int res = putenv(&e[0]);
 		assert(res == 0);
 		(void)res;
 #pragma warning( pop )

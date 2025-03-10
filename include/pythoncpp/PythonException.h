@@ -9,8 +9,16 @@ namespace Python
 	{
 	public:
 		PythonException(const std::string& msg)
-			: std::exception(msg.c_str())
+			: message(msg)
 		{ }
+
+		const char* what() const noexcept override
+		{
+			return this->message.c_str();
+		}
+
+	private:
+		const std::string& message;
 	};
 
 	class PythonErrorException : public PythonException

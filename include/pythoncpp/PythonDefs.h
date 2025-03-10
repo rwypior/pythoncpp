@@ -49,7 +49,7 @@ namespace Python
 		typedef void* (*fncPtr)(void* pySelf, void* pyArgs);
 		typedef int (*initFncPtr)(void *self , void *args, void *kwargs);
 		typedef void* (*newFncPtr)(void* type, void* args, void* kwargs);
-		typedef void* (*allocFncPtr)(void* type, __int64 size);
+		typedef void* (*allocFncPtr)(void* type, int64_t size);
 		typedef void (*deallocFncPtr)(void* self);
 		typedef void* (*reprFncPtr)(void* self);
 		typedef void* (*setAttrFunc)(void* self, void* args);
@@ -95,7 +95,7 @@ namespace Python
 
 			std::string name;
 			Type type;
-			__int64 offset;
+			int64_t offset;
 			bool readonly = false;
 			std::string docstring = "";
 		};
