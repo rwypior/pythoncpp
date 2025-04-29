@@ -13,7 +13,13 @@ function(InstallPython)
 	endif()
 
 	if(NOT arg_SCRIPTPATH)
-		set(arg_SCRIPTPATH "${PYCPP_INSTALL_PYTHON_PY}")
+		if(DEFINED PYCPP_INSTALL_PYTHON_PY)
+			# For installed installpython.py
+			set(arg_SCRIPTPATH "${PYCPP_INSTALL_PYTHON_PY}")
+		else()
+			# Fallback for using local installpython.py
+			set(arg_SCRIPTPATH "${CMAKE_SOURCE_DIR}/scripts/installpython.py")
+		endif()
 	endif()
 
 	if(NOT arg_INSTALLDIR)

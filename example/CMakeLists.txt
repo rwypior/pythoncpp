@@ -11,7 +11,7 @@ add_executable(PythonCppExample)
 
 set_property(TARGET PythonCppExample PROPERTY CXX_STANDARD 17)
 
-find_package(PythonCpp CONFIG REQUIRED)
+find_package(PythonCpp CONFIG)
 
 target_include_directories(PythonCppExample PRIVATE "${CMAKE_SOURCE_DIR}/include")
 target_include_directories(PythonCppExample PRIVATE "include")
@@ -28,10 +28,14 @@ add_custom_command(
 
 #include("${CMAKE_SOURCE_DIR}/cmake/InstallPython.cmake")
 
-if(${PythonCpp_FOUND})
+if(${PythonCpp_FOUND} AND DEFINED PYCPP_INSTALL_PYTHON)
 	include("${PYCPP_INSTALL_PYTHON}")
 	InstallPython(PACKAGES "pyglm==2.8.1" HEADER "${CMAKE_CURRENT_SOURCE_DIR}/include/pythondefs.h")
 	target_sources(PythonCppExample PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include/pythondefs.h")
 else()
 	message(WARNING "PythonCpp is not installed. Python installation script may not be run unless PythonCpp is installed. Use 'sudo make install' to install it, then reconfigure cmake.")
+
+	# Since example is relying on generated pythondefs.h and it's linking against globally installed PythonCpp, 
+	# it may not be built until PythonCpp environment has been installed
+	set_property(TARGET PythonCppExample PROPERTY EXCLUDE_FROM_ALL true)
 endif()

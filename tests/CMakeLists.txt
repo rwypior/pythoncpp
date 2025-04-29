@@ -28,7 +28,7 @@ add_custom_command(
 
 include("${CMAKE_SOURCE_DIR}/cmake/InstallPython.cmake")
 InstallPython(PACKAGES "pyglm==2.8.1" HEADER "${CMAKE_CURRENT_SOURCE_DIR}/include/pythondefs.h")
-target_sources(PythonCppExample PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include/pythondefs.h")
+target_sources(PythonCppTest PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include/pythondefs.h")
 
 list(APPEND CMAKE_MODULE_PATH ${Catch2_SOURCE_DIR}/extras)
 include(Catch)

@@ -3,6 +3,9 @@ CMakeSettings.json
 PythonCpp.sln
 CMakeUserPresets.json
 
+example/include/pythondefs.h
+tests/include/pythondefs.h
+
 .vs/
 __pycache__/
 out/

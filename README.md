@@ -2,6 +2,31 @@
 
 An utility library encapsulating the functionality of Python's C-API in C++.
 
+## Installation
+
+Clone the repository and use CMake to build and install it:
+```
+https://github.com/rwypior/pythoncpp.git
+cd pythoncpp
+mkdir build && cd build
+cmake ..
+sudo cmake --install .
+```
+
+Once the library is installed, link to it in your CMake project:
+
+```
+find_package(PythonCpp CONFIG REQUIRED)
+target_link_libraries(YOUR_PROJECT PRIVATE PythonCpp)
+```
+
+Optionally, the following CMake code may be added to your project in order to locally install your Python copy to your project:
+```
+include(${PYCPP_INSTALL_PYTHON})
+InstallPython()
+```
+By default InstallPython will install Python to your project's binary tree to `dist/lib/PythonXX` directory. The InstallPython function provides more configuration options which are listed below.
+
 ## Usage
 
 The library may be used as static library, or by embedding the source files directly into target project.
@@ -51,6 +76,38 @@ And setting `PYTHONPATH` at any time before loading the modules:
 ```
 py.setPath(pythonhome);
 ```
+
+## InstallPython()
+InstallPython is CMake function provided by this library which allows users to easily copy system's Python installation to your project. If the function is called without any parameters, Python will be installed to your project's binary directory to `dist/lib/PythonXX` directory. Following configuration options are supported:
+
+### DRYRUN
+Will cause the script to not perform any actions, only print the operations. Example: `InstallPython(DRYRUN ...)`.
+
+### VERSION /[version/]
+Specifies Python version to find. The argument will be directly passed to `find_package(PYTHON ...)`. Example: `InstallPython(VERSION 3.9.1 ...)`.
+
+### SCRIPTPATH /[path/]
+Overrides the location of `installpython.py` script which is used internally by this function.
+
+### PACKAGEDIR /[path/]
+Specifies directory where Python packages will be installed. By default, the path will be in `site-packages` directory in Python installation directory.
+
+### INSTALLDIR /[path/]
+Specifies directory where Python shared libraries will be installed. By default, the path will be in project's binary directory.
+
+### LIBDIR /[path/]
+Specifies directory where Python's built-in modules will be installed. By default, the path will be in `dist/lib` directory in Python's installation directory. `PythonXX` directory will be added to the path, where XX is Python's version.
+
+### TMP /[path/]
+Specifies path to where store temporary Python wheel files, used for installing Python packages.
+
+### HEADER /[path/]
+Specifies path where to generate C++ header file with relative paths to Python's directories. This file may be used for `Initializer::setHome` and `Python::setPath/appendPath` functions to quickly set up the environment. If not specifies - the file will not be generated.
+
+### PACKAGES /[packages/]
+A list of Python packages to install. Example - `InstallPython(PACKAGES "pyglm==2.8.0" "another-package")`
+
+All of the above are optional.
 
 ## Examples
 Example provide a great way to learn new things. That's why few examples are provided at [this location](PythonCppExample).
