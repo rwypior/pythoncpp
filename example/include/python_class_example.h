@@ -11,6 +11,7 @@
 #include <pythoncpp/PythonCpp.h>
 
 #include <iostream>
+#include <exception>
 
 struct PythonClassExample : public IExample
 {

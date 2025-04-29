@@ -1,5 +1,7 @@
 #pragma once
 
+#include "pythondefs.h"
+
 #include "pythoncpp/PythonCpp.h"
 
 #include <string>
@@ -8,9 +10,24 @@
 
 inline Python::Python& getPython()
 {
-	Python::Python& py = Python::Python::getInstance();
-	py.appendPath("python");
+	static bool initialized = false;
 
+	std::string pydir = "python";
+
+	if (!initialized)
+	{
+		Python::Initializer::getDefaultInitializer().setHome(Python::pythonhome);
+	}
+
+	Python::Python& py = Python::Python::getInstance();
+	py.setPath(pydir);
+	py.appendPath(Python::pythonhome);
+	for(const auto& path : Python::pythondirs)
+	{
+		py.appendPath(std::string(path));
+	}
+
+	initialized = true;
 	return py;
 }
 

@@ -18,7 +18,7 @@ namespace Python
 		}
 
 	private:
-		const std::string& message;
+		std::string message;
 	};
 
 	class PythonErrorException : public PythonException

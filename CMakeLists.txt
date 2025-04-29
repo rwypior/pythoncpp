@@ -47,16 +47,16 @@ set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT P
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
-set(ConfigPackageLocation lib/cmake/pythonCpp)
+set(ConfigPackageLocation lib/cmake/PythonCpp)
 
 configure_package_config_file(
         cmake/PythonCppConfig.cmake.in
-	    "${CMAKE_CURRENT_BINARY_DIR}/pythoncpp/pythonCppConfig.cmake"
+	    "${CMAKE_CURRENT_BINARY_DIR}/pythonCpp/PythonCppConfig.cmake"
 	    INSTALL_DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/pythonCpp"
 )
 
 write_basic_package_version_file(
-        "${CMAKE_CURRENT_BINARY_DIR}/pythoncpp/pythonCppConfigVersion.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/pythonCpp/PythonCppConfigVersion.cmake"
         VERSION 1.0.0
         COMPATIBILITY AnyNewerVersion
 )
@@ -75,10 +75,10 @@ install(
         FILES_MATCHING PATTERN "*.h"
 )
 
-export(EXPORT PythonCppTargets
-        FILE "${CMAKE_CURRENT_BINARY_DIR}/pythoncpp/pythonCppTargets.cmake"
-        NAMESPACE PythonCpp::
-)
+#export(EXPORT PythonCppTargets
+#        FILE "${CMAKE_CURRENT_BINARY_DIR}/pythonCpp/PythonCppTargets.cmake"
+#        NAMESPACE PythonCpp::
+#)
 
 install(EXPORT PythonCppTargets
         FILE PythonCppTargets.cmake
@@ -87,9 +87,15 @@ install(EXPORT PythonCppTargets
 )
 
 install(FILES 
-            "${CMAKE_CURRENT_BINARY_DIR}/pythoncpp/pythonCppConfig.cmake" 
-            "${CMAKE_CURRENT_BINARY_DIR}/pythoncpp/pythonCppConfigVersion.cmake"
+            "${CMAKE_CURRENT_BINARY_DIR}/pythonCpp/PythonCppConfig.cmake" 
+            "${CMAKE_CURRENT_BINARY_DIR}/pythonCpp/PythonCppConfigVersion.cmake"
         DESTINATION ${ConfigPackageLocation}
+)
+
+install(FILES
+			"cmake/InstallPython.cmake"
+			"scripts/installpython.py"
+			DESTINATION "${ConfigPackageLocation}/util"
 )
 
 export(PACKAGE PythonCpp)

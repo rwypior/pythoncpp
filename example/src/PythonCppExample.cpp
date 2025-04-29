@@ -8,6 +8,8 @@
 #include "python_class_example.h"
 #include "run_code_example.h"
 #include "module_reloading_example.h"
+#include "distributed_example.h"
+#include "builtin_module_example.h"
 
 #include <iostream>
 #include <string>
@@ -26,6 +28,8 @@ int main()
 	examples.push_back(std::make_unique<PythonClassExample>());
 	examples.push_back(std::make_unique<RunCodeExample>());
 	examples.push_back(std::make_unique<ModuleReloadingExample>());
+	examples.push_back(std::make_unique<DistributedExample>());
+	examples.push_back(std::make_unique<BuiltinModuleExample>());
 
 	int choice = 0;
 
