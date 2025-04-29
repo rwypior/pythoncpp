@@ -3,7 +3,7 @@ function(InstallPython)
 	set(onevalueargs "VERSION" "SCRIPTPATH" "PACKAGEDIR" "INSTALLDIR" "LIBDIR" "TMP" "HEADER")
 	set(multivalueargs "PACKAGES")
 	cmake_parse_arguments(PARSE_ARGV 0 arg "${options}" "${onevalueargs}" "${multivalueargs}")
-	message("GGGGGGGGGGGGGGGGGGGGG ${CMAKE_CURRENT_LIST_DIR}")
+	
 	if(NOT arg_LIBDIR)
 		set(arg_LIBDIR "dist/lib")
 	endif()
@@ -13,7 +13,7 @@ function(InstallPython)
 	endif()
 
 	if(NOT arg_SCRIPTPATH)
-		set(arg_SCRIPTPATH "${CMAKE_SOURCE_DIR}/scripts/installpython.py")
+		set(arg_SCRIPTPATH "${PYCPP_INSTALL_PYTHON_PY}")
 	endif()
 
 	if(NOT arg_INSTALLDIR)

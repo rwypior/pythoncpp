@@ -3,5 +3,6 @@
 include("${CMAKE_CURRENT_LIST_DIR}/PythonCppTargets.cmake")
 
 set(PYCPP_INSTALL_PYTHON "${CMAKE_CURRENT_LIST_DIR}/util/InstallPython.cmake")
+set(PYCPP_INSTALL_PYTHON_PY "${CMAKE_CURRENT_LIST_DIR}/util/installpython.py")
 
 check_required_components(PythonCpp)
