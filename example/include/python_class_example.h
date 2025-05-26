@@ -6,6 +6,7 @@
 #pragma once
 
 #include "common.h"
+#include "pythondefs.h"
 
 // Include all-in-one PythonCPP header
 #include <pythoncpp/PythonCpp.h>
@@ -20,6 +21,9 @@ struct PythonClassExample : public IExample
 	{
 		try
 		{
+			// Initialize python environment
+			Python::Initializer::getDefaultInitializer().setHome(Python::pythonhome);
+
 			// Create Python instance
 			Python::Python py;
 			py.appendPath(getPythonDirectory());

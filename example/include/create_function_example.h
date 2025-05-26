@@ -6,6 +6,7 @@
 #pragma once
 
 #include "common.h"
+#include "pythondefs.h"
 
 // Include all-in-one PythonCPP header
 #include <pythoncpp/PythonCpp.h>
@@ -17,6 +18,9 @@ struct CreateFunctionExample : public IExample
 	virtual std::string getExampleName() const override { return "Create function from source"; }
 	virtual void run()
 	{
+		// Initialize python environment
+		Python::Initializer::getDefaultInitializer().setHome(Python::pythonhome);
+
 		// Create Python instance
 		Python::Python py;
 		py.appendPath(getPythonDirectory());

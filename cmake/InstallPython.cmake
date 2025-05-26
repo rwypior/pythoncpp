@@ -1,7 +1,7 @@
 function(InstallPython)
 	set(options "DRYRUN")
 	set(onevalueargs "VERSION" "SCRIPTPATH" "PACKAGEDIR" "INSTALLDIR" "LIBDIR" "TMP" "HEADER")
-	set(multivalueargs "PACKAGES")
+	set(multivalueargs "PACKAGES" "IGNORE")
 	cmake_parse_arguments(PARSE_ARGV 0 arg "${options}" "${onevalueargs}" "${multivalueargs}")
 	
 	if(NOT arg_LIBDIR)
@@ -38,6 +38,16 @@ function(InstallPython)
 		endif()
 		string(REPLACE " " ";" pycpp_package_str "${pycpp_package_str}")
 
+		set(pycpp_ignore_str "")
+		foreach(ign IN LISTS arg_IGNORE)
+			set(pycpp_ignore_str "${pycpp_ignore_str} ${ign}")
+		endforeach()
+		
+		if(NOT ${pycpp_ignore_str} STREQUAL "")
+			set(pycpp_ignore_str "-e ${pycpp_ignore_str}")
+		endif()
+		string(REPLACE " " ";" pycpp_ignore_str "${pycpp_ignore_str}")
+
 		set(pycpp_DRYRUN "")
 		if(arg_DRYRUN)
 			set(pycpp_DRYRUN "-d")
@@ -54,8 +64,8 @@ function(InstallPython)
 			set(pycpp_HEADER "--generateheader ${arg_HEADER}")
 			string(REPLACE " " ";" pycpp_HEADER "${pycpp_HEADER}")
 		endif()
-
-		execute_process(COMMAND ${Python_EXECUTABLE} ${arg_SCRIPTPATH} ${arg_INSTALLDIR} -a ${arg_LIBDIR} ${pycpp_package_str} ${pycpp_PACKAGEDIR} --wheeldir ${arg_TMP} ${pycpp_HEADER} ${pycpp_DRYRUN} -s -i)
+				
+		execute_process(COMMAND ${Python_EXECUTABLE} ${arg_SCRIPTPATH} ${arg_INSTALLDIR} -a ${arg_LIBDIR} ${pycpp_package_str} ${pycpp_ignore_str} ${pycpp_PACKAGEDIR} --wheeldir ${arg_TMP} ${pycpp_HEADER} ${pycpp_DRYRUN} -s -i)
 	else()
 		message("Python not found. In order to install Python environment, please install Python")
 	endif()

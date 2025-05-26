@@ -6,6 +6,7 @@
 #pragma once
 
 #include "common.h"
+#include "pythondefs.h"
 
 // Include all-in-one PythonCPP header
 #include <pythoncpp/PythonCpp.h>

@@ -36,6 +36,6 @@ else()
 	message(WARNING "PythonCpp is not installed. Python installation script may not be run unless PythonCpp is installed. Use 'sudo make install' to install it, then reconfigure cmake.")
 
 	# Since example is relying on generated pythondefs.h and it's linking against globally installed PythonCpp, 
-	# it may not be built until PythonCpp environment has been installed
+	# it may not be built until PythonCpp environment has been installed 
 	set_property(TARGET PythonCppExample PROPERTY EXCLUDE_FROM_ALL true)
 endif()
